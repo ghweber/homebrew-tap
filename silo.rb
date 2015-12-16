@@ -39,6 +39,16 @@ class Silo < Formula
     #
     # The installed folder is not in the path, so use the entire path to any
     # executables being tested: `system "#{bin}/program", "do", "something"`.
-    system "true"
+    (testpath/"test.c").write <<-EOS.undent
+      #include <stdio.h>
+      #include "silo.h"
+      int main()
+      {
+        printf(\"%d.%d.%d\\n\",SILO_VERS_MAJ,SILO_VERS_MIN,SILO_VERS_PAT);
+        return 0;
+      }
+    EOS
+    system "cc", "test.c"
+    assert_match(/#{version}/, shell_output("./a.out"))
   end
 end
