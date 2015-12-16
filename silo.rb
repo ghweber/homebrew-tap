@@ -3,8 +3,8 @@
 # PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
 
 class Silo < Formula
-  desc ""
-  homepage ""
+  desc "A Mesh and Field I/O Library and Scientific Database"
+  homepage "https://wci.llnl.gov/simulation/computer-codes/silo"
   url "https://wci.llnl.gov/content/assets/docs/simulation/computer-codes/silo/silo-4.10.2/silo-4.10.2.tar.gz"
   version "4.10.2"
   sha256 "3af87e5f0608a69849c00eb7c73b11f8422fa36903dd14610584506e7f68e638"
