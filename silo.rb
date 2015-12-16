@@ -23,7 +23,7 @@ class Silo < Formula
                           "--enable-shared",
                           "--enable-browser=no",
                           "--enable-silex=no",
-                          "--with-hdf5=#{Formula["hdf5"].opt_prefix}"
+                          "--with-hdf5=#{Formula["hdf5"].opt_prefix}",
                           "--prefix=#{prefix}"
     # system "cmake", ".", *std_cmake_args
     system "make", "install" # if this fails, try separate make/make install steps
