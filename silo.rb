@@ -8,8 +8,7 @@ class Silo < Formula
   option "with-static", "Build as static instead of dynamic library"
   option "without-lite-headers", "Do not install PDB lite headers"
 
-  depends_on :x11 => :optional
-  depends_on "gcc"
+  depends_on "gcc" # for gfortran
   depends_on "readline"
   depends_on "hdf5" => :recommended
 
@@ -17,11 +16,11 @@ class Silo < Formula
     args = ["--prefix=#{prefix}"]
     args << "--enable-optimization"
     args << "--with-zlib"
-    args << "--enable-install-lite-headers" if build.with? "lite-headers"
-    args << "--enable-shared" if build.without? "static"
-    args << "--enable-x" if build.with? "x11"
+    #args << "--enable-install-lite-headers" if build.with? "lite-headers"
+    #args << "--enable-shared" if build.without? "static"
     args << "--with-hdf5=#{Formula["hdf5"].opt_prefix}" if build.with? "hdf5"
 
+    ENV.append "CFLAGS", "-DH5_USE_110_API_DEFAULT"
     ENV.append "LDFLAGS", "-L#{Formula["readline"].opt_lib} -lreadline"
     system "./configure", *args
     system "make", "install"
